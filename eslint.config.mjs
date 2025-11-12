@@ -5,6 +5,7 @@ import nextTs from 'eslint-config-next/typescript'
 import featureSliced from '@conarti/eslint-plugin-feature-sliced'
 import importPlugin from 'eslint-plugin-import'
 import prettierConfig from 'eslint-config-prettier'
+import storybook from 'eslint-plugin-storybook'
 
 export default defineConfig([
     // глобальные игноры
@@ -24,20 +25,25 @@ export default defineConfig([
     ...nextVitals,
     ...nextTs,
 
+    // общий проектный конфиг
     {
         plugins: {
             '@conarti/feature-sliced': featureSliced,
             import: importPlugin,
         },
         rules: {
-            // FSD: слои и слайсы
             '@conarti/feature-sliced/layers-slices': 'error',
-            // FSD: абсолютные/относительные импорты
             '@conarti/feature-sliced/absolute-relative': 'error',
-            // FSD: импорт только из public API
             '@conarti/feature-sliced/public-api': 'error',
         },
     },
 
+    // Storybook — только для сторис-файлов
+    {
+        files: ['**/*.stories.@(ts|tsx)'],
+        ...storybook.configs.recommended,
+    },
+
+    // Prettier — всегда последним
     prettierConfig,
 ])
