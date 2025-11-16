@@ -1,6 +1,7 @@
 'use client'
 
 import type { Task } from '../model/task.types'
+import { Item, ItemContent, ItemTitle } from '@/shared/ui/item'
 
 interface TaskCardProps {
     task: Task
@@ -8,13 +9,10 @@ interface TaskCardProps {
 
 export default function TaskCard({ task }: TaskCardProps) {
     return (
-        <div className="rounded-xl border bg-background p-3 shadow-sm transition hover:shadow-md cursor-pointer">
-            <div className="text-sm font-semibold">{task.title}</div>
-            {task.description && (
-                <p className="mt-1 text-xs text-muted-foreground line-clamp-3">
-                    {task.description}
-                </p>
-            )}
-        </div>
+        <Item variant={'outline'}>
+            <ItemContent>
+                <ItemTitle>{task.title}</ItemTitle>
+            </ItemContent>
+        </Item>
     )
 }
