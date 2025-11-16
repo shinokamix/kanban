@@ -1,4 +1,5 @@
 export type { Task, TaskStatus } from './model/task.types'
+export { TaskSchema, TaskStatusSchema } from './model/task.types'
 export {
     tasksReducer,
     taskAdded,

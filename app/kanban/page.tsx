@@ -1,7 +1,8 @@
 'use client'
 
 import { useAppSelector } from '../../providers/StoreProvider'
-import { Task, TaskItem, taskSelectors, type TaskStatus } from '@/entities/task'
+import { Task, taskSelectors, type TaskStatus } from '@/entities/task'
+import { TaskCard } from '@/features/task-details'
 import { CreateTaskButton } from '@/features/create-task'
 
 const statuses: TaskStatus[] = ['todo', 'in-progress', 'done']
@@ -23,7 +24,7 @@ export default function KanbanPage() {
                         </h2>
                         <div className="space-y-2">
                             {tasksByStatus.map((task: Task) => (
-                                <TaskItem key={task.id} task={task} />
+                                <TaskCard key={task.id} task={task} />
                             ))}
                         </div>
                     </section>

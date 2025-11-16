@@ -5,3 +5,6 @@ export const selectTasks = (state: RootState) => state.tasks.items
 
 export const selectTasksByStatus = (status: TaskStatus) => (state: RootState) =>
     state.tasks.items.filter((task: Task) => task.status === status)
+
+export const selectById = (state: RootState, id: string): Task | undefined =>
+    selectTasks(state).find((t) => t.id === id)
