@@ -1,0 +1,27 @@
+'use client'
+
+import { useCallback } from 'react'
+import { useAppDispatch } from '@/providers/StoreProvider'
+import { taskUpdated, type Task } from '@/entities/task'
+import type { EditTaskFormValues } from './schema'
+
+export function useEditTask(task: Task) {
+    const dispatch = useAppDispatch()
+
+    const editTask = useCallback(
+        (values: EditTaskFormValues) => {
+            dispatch(
+                taskUpdated({
+                    ...task,
+                    title: values.title,
+                    description: values.description ?? '',
+                    status: values.status,
+                    updatedAt: new Date().toISOString(),
+                }),
+            )
+        },
+        [dispatch, task],
+    )
+
+    return { editTask }
+}
