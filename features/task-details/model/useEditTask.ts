@@ -5,11 +5,13 @@ import { useAppDispatch } from '@/providers/StoreProvider'
 import { taskUpdated, type Task } from '@/entities/task'
 import type { EditTaskFormValues } from './schema'
 
-export function useEditTask(task: Task) {
+export function useEditTask(task: Task | undefined) {
     const dispatch = useAppDispatch()
 
     const editTask = useCallback(
         (values: EditTaskFormValues) => {
+            if (!task) return
+
             dispatch(
                 taskUpdated({
                     ...task,
