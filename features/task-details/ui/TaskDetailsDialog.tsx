@@ -63,11 +63,23 @@ export function TaskDetailsDialog({ taskId, open, onOpenChange }: TaskDetailsDia
                         </div>
 
                         <div className="flex items-center justify-between pt-2">
-                            <div className="text-xs text-muted-foreground">
-                                Created at:{' '}
-                                <span className="font-medium">
-                                    {new Date(task.createdAt).toLocaleString()}
-                                </span>
+                            <div>
+                                <div className="text-xs text-muted-foreground">
+                                    Created at:{' '}
+                                    <span className="font-medium">
+                                        {new Date(task.createdAt).toLocaleString()}
+                                    </span>
+                                </div>
+                                {task.createdAt === task.updatedAt ? (
+                                    ''
+                                ) : (
+                                    <div className="text-xs text-muted-foreground">
+                                        Updated at:{' '}
+                                        <span className="font-medium">
+                                            {new Date(task.updatedAt).toLocaleString()}
+                                        </span>
+                                    </div>
+                                )}
                             </div>
                             <Button size="sm" onClick={() => setIsEditing(true)}>
                                 Edit
