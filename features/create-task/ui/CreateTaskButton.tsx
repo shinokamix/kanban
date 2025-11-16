@@ -1,29 +1,23 @@
 'use client'
 
-import { useCallback } from 'react'
-import { useAppDispatch } from '@/providers/StoreProvider'
-import { taskAdded } from '@/entities/task'
+import { useState } from 'react'
 import type { TaskStatus } from '@/entities/task'
+
 import { Button } from '@/shared/ui/button'
+import { CreateTaskDialog } from './CreateTaskDialog'
 
 type CreateTaskButtonProps = {
     initialStatus?: TaskStatus
 }
 
 export function CreateTaskButton({ initialStatus = 'todo' }: CreateTaskButtonProps) {
-    const dispatch = useAppDispatch()
+    const [open, setOpen] = useState(false)
 
-    const handleClick = useCallback(() => {
-        dispatch(
-            taskAdded({
-                id: crypto.randomUUID(),
-                title: 'New Task',
-                description: '',
-                status: initialStatus,
-                createdAt: new Date().toISOString(),
-            }),
-        )
-    }, [dispatch, initialStatus])
+    return (
+        <>
+            <Button onClick={() => setOpen(true)}>New Task</Button>
 
-    return <Button onClick={handleClick}>Create Task</Button>
+            <CreateTaskDialog open={open} onOpenChange={setOpen} initialStatus={initialStatus} />
+        </>
+    )
 }
