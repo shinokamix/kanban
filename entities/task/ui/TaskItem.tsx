@@ -9,7 +9,7 @@ interface TaskCardProps {
 
 export default function TaskItem({ task }: TaskCardProps) {
     return (
-        <Item variant={'outline'}>
+        <Item variant={'outline'} size={'sm'}>
             <ItemContent>
                 <ItemTitle>{task.title}</ItemTitle>
             </ItemContent>
