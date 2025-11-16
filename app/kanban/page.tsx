@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '../providers/StoreProvider'
+import { useAppDispatch, useAppSelector } from '../../providers/StoreProvider'
 import { Task, TaskCard, taskAdded, taskSelectors, type TaskStatus } from '@/entities/task'
 
 const statuses: TaskStatus[] = ['todo', 'in-progress', 'done']

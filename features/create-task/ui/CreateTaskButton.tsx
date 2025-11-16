@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback } from 'react'
-import { useAppDispatch } from '@/app/providers/StoreProvider'
+import { useAppDispatch } from '@/providers/StoreProvider'
 import { taskAdded } from '@/entities/task'
 import type { TaskStatus } from '@/entities/task'
 

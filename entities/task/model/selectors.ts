@@ -1,4 +1,4 @@
-import type { RootState } from '@/app/providers/StoreProvider'
+import type { RootState } from '@/providers/StoreProvider'
 import type { Task, TaskStatus } from './task.types'
 
 export const selectTasks = (state: RootState) => state.tasks.items
