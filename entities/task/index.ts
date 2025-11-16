@@ -7,4 +7,4 @@ export {
     taskStatusChanged,
 } from './model/task.slice'
 export * as taskSelectors from './model/selectors'
-export { default as TaskCard } from './ui/TaskCard'
+export { default as TaskItem } from './ui/TaskItem'

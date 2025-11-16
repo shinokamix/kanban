@@ -7,7 +7,7 @@ interface TaskCardProps {
     task: Task
 }
 
-export default function TaskCard({ task }: TaskCardProps) {
+export default function TaskItem({ task }: TaskCardProps) {
     return (
         <Item variant={'outline'}>
             <ItemContent>
