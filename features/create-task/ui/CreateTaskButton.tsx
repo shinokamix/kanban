@@ -4,6 +4,7 @@ import { useCallback } from 'react'
 import { useAppDispatch } from '@/providers/StoreProvider'
 import { taskAdded } from '@/entities/task'
 import type { TaskStatus } from '@/entities/task'
+import { Button } from '@/shared/ui/button'
 
 type CreateTaskButtonProps = {
     initialStatus?: TaskStatus
@@ -24,12 +25,5 @@ export function CreateTaskButton({ initialStatus = 'todo' }: CreateTaskButtonPro
         )
     }, [dispatch, initialStatus])
 
-    return (
-        <button
-            onClick={handleClick}
-            className="w-fit rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
-        >
-            Create Task
-        </button>
-    )
+    return <Button onClick={handleClick}>Create Task</Button>
 }
