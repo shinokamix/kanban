@@ -1,4 +1,3 @@
-// features/task-details/ui/TaskDetailsDialog.tsx
 'use client'
 
 import { useState } from 'react'

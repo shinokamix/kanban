@@ -7,5 +7,5 @@ export {
     taskRemoved,
     taskStatusChanged,
 } from './model/task.slice'
-export * as taskSelectors from './model/selectors'
+export { taskSelectors } from './model/selectors'
 export { default as TaskItem } from './ui/TaskItem'

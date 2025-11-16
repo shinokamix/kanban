@@ -8,7 +8,7 @@ import { CreateTaskButton } from '@/features/create-task'
 const statuses: TaskStatus[] = ['todo', 'in-progress', 'done']
 
 export default function KanbanPage() {
-    const tasks = useAppSelector(taskSelectors.selectTasks)
+    const tasks = useAppSelector(taskSelectors.selectAll)
 
     return (
         <main className="mx-auto flex max-w-5xl gap-4 p-6">

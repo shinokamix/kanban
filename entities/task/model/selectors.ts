@@ -1,10 +1,13 @@
 import type { RootState } from '@/providers/StoreProvider'
-import type { Task, TaskStatus } from './task.types'
+import { tasksAdapter } from './task.slice'
 
-export const selectTasks = (state: RootState) => state.tasks.items
+const selectTasksState = (state: RootState) => state.tasks
 
-export const selectTasksByStatus = (status: TaskStatus) => (state: RootState) =>
-    state.tasks.items.filter((task: Task) => task.status === status)
+export const taskSelectors = tasksAdapter.getSelectors<RootState>((state) =>
+    selectTasksState(state),
+)
 
-export const selectById = (state: RootState, id: string): Task | undefined =>
-    selectTasks(state).find((t) => t.id === id)
+// taskSelectors.selectAll(state)      -> Task[]
+// taskSelectors.selectById(state, id) -> Task | undefined
+// taskSelectors.selectIds(state)      -> EntityId[]
+// taskSelectors.selectEntities(state) -> Record<string, Task>
