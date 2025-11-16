@@ -1,15 +1,12 @@
 'use client'
 
-import { useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '../../providers/StoreProvider'
-import { Task, TaskCard, taskAdded, taskSelectors, type TaskStatus } from '@/entities/task'
-import { CreateTaskButton } from '@/features/create-task/ui/CreateTaskButton'
+import { useAppSelector } from '../../providers/StoreProvider'
+import { Task, TaskCard, taskSelectors, type TaskStatus } from '@/entities/task'
+import { CreateTaskButton } from '@/features/create-task'
 
 const statuses: TaskStatus[] = ['todo', 'in-progress', 'done']
 
 export default function KanbanPage() {
-    const dispatch = useAppDispatch()
-
     const tasks = useAppSelector(taskSelectors.selectTasks)
 
     return (
