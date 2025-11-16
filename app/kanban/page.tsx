@@ -3,6 +3,7 @@
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../providers/StoreProvider'
 import { Task, TaskCard, taskAdded, taskSelectors, type TaskStatus } from '@/entities/task'
+import { CreateTaskButton } from '@/features/create-task/ui/CreateTaskButton'
 
 const statuses: TaskStatus[] = ['todo', 'in-progress', 'done']
 
@@ -11,20 +12,10 @@ export default function KanbanPage() {
 
     const tasks = useAppSelector(taskSelectors.selectTasks)
 
-    useEffect(() => {
-        dispatch(
-            taskAdded({
-                id: '1',
-                title: 'Настроить Redux',
-                description: 'Сделать StoreProvider и Task entity',
-                status: 'in-progress',
-                createdAt: new Date().toISOString(),
-            }),
-        )
-    }, [dispatch])
-
     return (
         <main className="mx-auto flex max-w-5xl gap-4 p-6">
+            <CreateTaskButton />
+
             {statuses.map((status) => {
                 const tasksByStatus = tasks.filter((task: Task) => task.status === status)
 
