@@ -18,6 +18,7 @@ export function useCreateTask(initialStatus: TaskStatus = 'todo') {
                     description: values.description ?? '',
                     status: initialStatus,
                     createdAt: new Date().toISOString(),
+                    updatedAt: new Date().toISOString(),
                 }),
             )
         },
