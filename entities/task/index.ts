@@ -3,6 +3,8 @@ export { TaskSchema, TaskStatusSchema } from './model/task.types'
 export {
     tasksReducer,
     taskAdded,
+    tasksAddedMany,
+    tasksCleared,
     taskUpdated,
     taskRemoved,
     taskStatusChanged,
