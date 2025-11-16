@@ -1,5 +1,3 @@
-'use client'
-
 import type { Task } from '../model/task.types'
 import { Item, ItemContent, ItemTitle } from '@/shared/ui/item'
 
