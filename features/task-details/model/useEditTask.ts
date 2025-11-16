@@ -14,11 +14,13 @@ export function useEditTask(task: Task | undefined) {
 
             dispatch(
                 taskUpdated({
-                    ...task,
-                    title: values.title,
-                    description: values.description ?? '',
-                    status: values.status,
-                    updatedAt: new Date().toISOString(),
+                    id: task.id,
+                    changes: {
+                        title: values.title,
+                        description: values.description ?? '',
+                        status: values.status,
+                        updatedAt: new Date().toISOString(),
+                    },
                 }),
             )
         },
