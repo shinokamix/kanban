@@ -16,21 +16,41 @@ type TaskCardWithDetailsProps = {
 
 export function TaskCard({ task }: TaskCardWithDetailsProps) {
     const [open, setOpen] = useState(false)
-    const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
+    const {
+        attributes,
+        listeners,
+        setNodeRef,
+        setActivatorNodeRef,
+        transform,
+        transition,
+        isDragging,
+    } = useSortable({
         id: task.id,
     })
 
+    const style: React.CSSProperties = {
+        transform: CSS.Transform.toString(transform),
+        transition,
+        opacity: isDragging ? 0.6 : 1,
+    }
+
     return (
         <>
-            <Item variant={'outline'} size={'sm'} onClick={() => setOpen(true)}>
+            <Item
+                ref={setNodeRef}
+                style={style}
+                variant={'outline'}
+                size={'sm'}
+                onClick={() => setOpen(true)}
+            >
                 <ItemContent>
                     <p>{task.title}</p>
                 </ItemContent>
                 <ItemActions
-                    ref={setNodeRef}
-                    style={{ transform: CSS.Transform.toString(transform), transition }}
-                    {...attributes}
+                    ref={setActivatorNodeRef}
                     {...listeners}
+                    {...attributes}
+                    onClick={(e) => e.stopPropagation()}
                 >
                     <Grip />
                 </ItemActions>
