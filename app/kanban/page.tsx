@@ -1,38 +1,15 @@
-'use client'
-
-import { useAppSelector } from '../../providers/StoreProvider'
-import { Task, taskSelectors, type TaskStatus } from '@/entities/task'
-import { TaskCard } from '@/features/task-details'
 import { CreateTaskButton } from '@/features/create-task'
-import { useLoadTasks } from '@/widgets/tasks-list'
-
-const statuses: TaskStatus[] = ['todo', 'in-progress', 'done']
+import { TaskBoard } from '@/widgets/task-board'
 
 export default function KanbanPage() {
-    useLoadTasks()
-
-    const tasks = useAppSelector(taskSelectors.selectAll)
-
     return (
-        <main className="mx-auto flex max-w-5xl gap-4 p-6">
-            <CreateTaskButton />
+        <main className="mx-auto flex max-w-5xl flex-col gap-4 p-6">
+            <div className="flex items-center justify-between">
+                <h1 className="text-xl font-semibold">Kanban</h1>
+                <CreateTaskButton />
+            </div>
 
-            {statuses.map((status) => {
-                const tasksByStatus = tasks.filter((task: Task) => task.status === status)
-
-                return (
-                    <section key={status} className="flex-1 space-y-3">
-                        <h2 className="text-lg font-semibold capitalize">
-                            {status.replace('-', ' ')}
-                        </h2>
-                        <div className="space-y-2">
-                            {tasksByStatus.map((task: Task) => (
-                                <TaskCard key={task.id} task={task} />
-                            ))}
-                        </div>
-                    </section>
-                )
-            })}
+            <TaskBoard />
         </main>
     )
 }
