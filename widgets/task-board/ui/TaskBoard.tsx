@@ -1,3 +1,5 @@
+'use client'
+
 import { useLoadTasks } from '../model/useLoadTasks'
 import { useAppSelector } from '@/providers/StoreProvider'
 import { taskSelectors } from '@/entities/task'
