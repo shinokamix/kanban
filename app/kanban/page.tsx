@@ -4,7 +4,7 @@ import { useAppSelector } from '../../providers/StoreProvider'
 import { Task, taskSelectors, type TaskStatus } from '@/entities/task'
 import { TaskCard } from '@/features/task-details'
 import { CreateTaskButton } from '@/features/create-task'
-import { useLoadTasks } from '@/features/tasks-list'
+import { useLoadTasks } from '@/widgets/tasks-list'
 
 const statuses: TaskStatus[] = ['todo', 'in-progress', 'done']
 
