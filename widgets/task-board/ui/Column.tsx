@@ -9,7 +9,7 @@ type ColumnProps = {
 
 export default function Column({ tasks }: ColumnProps) {
     return (
-        <ul>
+        <ul className="flex flex-col gap-[0.5dvh]">
             {tasks.map((task) => {
                 return (
                     <li key={task.id}>
