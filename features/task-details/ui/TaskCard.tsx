@@ -47,7 +47,7 @@ export function TaskCard({ task, onOpenDetails }: TaskCardProps) {
                 {...listeners}
                 {...attributes}
                 onClick={(e) => e.stopPropagation()}
-                className="cursor-grab w-4 h-4"
+                className="cursor-grab w-4 h-4 touch-none"
             >
                 <GripVertical />
             </ItemActions>

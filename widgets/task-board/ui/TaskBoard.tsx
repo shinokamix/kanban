@@ -22,6 +22,7 @@ import {
     type DragStartEvent,
     type DragOverEvent,
     type DragEndEvent,
+    TouchSensor,
 } from '@dnd-kit/core'
 import { sortableKeyboardCoordinates } from '@dnd-kit/sortable'
 
@@ -55,6 +56,12 @@ export function TaskBoard() {
     // сенсоры как раньше ...
     const sensors = useSensors(
         useSensor(PointerSensor),
+        useSensor(TouchSensor, {
+            activationConstraint: {
+                delay: 200,
+                tolerance: 5,
+            },
+        }),
         useSensor(KeyboardSensor, {
             coordinateGetter: sortableKeyboardCoordinates,
         }),
