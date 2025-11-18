@@ -5,6 +5,7 @@ import { Item, ItemActions, ItemContent } from '@/shared/ui/item'
 
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
+import { Label } from '@/shared/ui/label'
 
 type TaskCardProps = {
     task: Task
@@ -40,7 +41,7 @@ export function TaskCard({ task, onOpenDetails }: TaskCardProps) {
             className="bg-background"
         >
             <ItemContent>
-                <p className="pointer-events-none">{task.title}</p>
+                <Label className="pointer-events-none">{task.title}</Label>
             </ItemContent>
             <ItemActions
                 ref={setActivatorNodeRef}
