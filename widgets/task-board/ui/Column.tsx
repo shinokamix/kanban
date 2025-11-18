@@ -18,7 +18,16 @@ export default function Column({ tasks, id }: ColumnProps) {
 
     return (
         <SortableContext id={id} items={tasks} strategy={rectSortingStrategy}>
-            <ul className="flex flex-col gap-[0.5dvh]" ref={setNodeRef}>
+            <ul
+                className={`${
+                    id === 'todo'
+                        ? 'bg-gray-50'
+                        : id === 'in-progress'
+                          ? 'bg-blue-50'
+                          : 'bg-green-50'
+                } p-2 min-h-136 rounded-xl flex flex-col gap-[0.5dvh]`}
+                ref={setNodeRef}
+            >
                 {tasks.map((task) => {
                     return (
                         <li key={task.id}>
