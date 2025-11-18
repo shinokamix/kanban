@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { tasksReducer } from '@/entities/task'
+import { taskBoardReducer } from '@/widgets/task-board'
 
 export const makeStore = () => {
     return configureStore({
         reducer: {
             tasks: tasksReducer,
+            taskBoard: taskBoardReducer,
         },
         devTools: process.env.NODE_ENV !== 'production',
     })
