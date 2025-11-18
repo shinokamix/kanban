@@ -192,8 +192,17 @@ export function TaskBoard() {
                         .filter(Boolean) as Task[]
 
                     return (
-                        <section key={col}>
-                            <Label className="py-4 capitalize">{col}</Label>
+                        <section
+                            key={col}
+                            className={`${
+                                col === 'todo'
+                                    ? 'bg-gray-50'
+                                    : col === 'in-progress'
+                                      ? 'bg-blue-50'
+                                      : 'bg-green-50'
+                            } p-2 rounded-xl`}
+                        >
+                            <Label className="p-2 capitalize">{col}</Label>
                             <Column id={col} tasks={items} />
                         </section>
                     )
