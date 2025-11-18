@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import type { Task } from '@/entities/task'
 import { TaskDetailsDialog } from './TaskDetailsDialog'
-import { Grip } from 'lucide-react'
+import { GripVertical } from 'lucide-react'
 
 import { Item, ItemActions, ItemContent } from '@/shared/ui/item'
 
@@ -51,9 +51,9 @@ export function TaskCard({ task }: TaskCardWithDetailsProps) {
                     {...listeners}
                     {...attributes}
                     onClick={(e) => e.stopPropagation()}
-                    className="cursor-grab"
+                    className="cursor-grab w-4 h-4"
                 >
-                    <Grip />
+                    <GripVertical />
                 </ItemActions>
             </Item>
             <TaskDetailsDialog taskId={task.id} open={open} onOpenChange={setOpen} />
