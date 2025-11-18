@@ -44,7 +44,7 @@ export function TaskCard({ task }: TaskCardWithDetailsProps) {
                 onClick={() => setOpen(true)}
             >
                 <ItemContent>
-                    <p>{task.title}</p>
+                    <p className="pointer-events-none">{task.title}</p>
                 </ItemContent>
                 <ItemActions
                     ref={setActivatorNodeRef}
