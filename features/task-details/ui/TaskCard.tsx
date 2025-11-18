@@ -51,6 +51,7 @@ export function TaskCard({ task }: TaskCardWithDetailsProps) {
                     {...listeners}
                     {...attributes}
                     onClick={(e) => e.stopPropagation()}
+                    className="cursor-grab"
                 >
                     <Grip />
                 </ItemActions>
