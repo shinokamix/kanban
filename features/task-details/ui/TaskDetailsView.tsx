@@ -41,13 +41,25 @@ export function TaskDetailsView({ task, onEdit, onConfirmDelete }: TaskDetailsVi
                 </div>
             </dl>
 
-            <footer className="flex items-center justify-between pt-2">
-                <p className="text-xs text-muted-foreground">
-                    Created:{' '}
-                    <time dateTime={task.createdAt} className="font-medium">
-                        {new Date(task.createdAt).toLocaleString()}
-                    </time>
-                </p>
+            <footer className="flex items-center justify-between">
+                <div className="flex flex-col gap-0.5">
+                    <p className="text-xs text-muted-foreground">
+                        Created:{' '}
+                        <time dateTime={task.createdAt} className="font-medium">
+                            {new Date(task.createdAt).toLocaleString()}
+                        </time>
+                    </p>
+                    {task.createdAt === task.updatedAt ? (
+                        ''
+                    ) : (
+                        <p className="text-xs text-muted-foreground">
+                            Updated:{' '}
+                            <time dateTime={task.updatedAt} className="font-medium">
+                                {new Date(task.updatedAt).toLocaleString()}
+                            </time>
+                        </p>
+                    )}
+                </div>
 
                 <div className="flex items-center gap-2">
                     <Button size="sm" type="button" onClick={onEdit}>

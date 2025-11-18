@@ -1,21 +1,18 @@
-'use client'
-
-import { useState } from 'react'
 import type { Task } from '@/entities/task'
-import { TaskDetailsDialog } from './TaskDetailsDialog'
-import { Grip } from 'lucide-react'
+import { GripVertical } from 'lucide-react'
 
 import { Item, ItemActions, ItemContent } from '@/shared/ui/item'
 
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
+import { Label } from '@/shared/ui/label'
 
-type TaskCardWithDetailsProps = {
+type TaskCardProps = {
     task: Task
+    onOpenDetails: (taskId: string) => void
 }
 
-export function TaskCard({ task }: TaskCardWithDetailsProps) {
-    const [open, setOpen] = useState(false)
+export function TaskCard({ task, onOpenDetails }: TaskCardProps) {
     const {
         attributes,
         listeners,
@@ -35,28 +32,26 @@ export function TaskCard({ task }: TaskCardWithDetailsProps) {
     }
 
     return (
-        <>
-            <Item
-                ref={setNodeRef}
-                style={style}
-                variant={'outline'}
-                size={'sm'}
-                onClick={() => setOpen(true)}
+        <Item
+            ref={setNodeRef}
+            style={style}
+            variant="outline"
+            size="sm"
+            onClick={() => onOpenDetails(task.id)}
+            className="bg-background"
+        >
+            <ItemContent>
+                <Label className="pointer-events-none">{task.title}</Label>
+            </ItemContent>
+            <ItemActions
+                ref={setActivatorNodeRef}
+                {...listeners}
+                {...attributes}
+                onClick={(e) => e.stopPropagation()}
+                className="cursor-grab w-4 h-4 touch-none"
             >
-                <ItemContent>
-                    <p>{task.title}</p>
-                </ItemContent>
-                <ItemActions
-                    ref={setActivatorNodeRef}
-                    {...listeners}
-                    {...attributes}
-                    onClick={(e) => e.stopPropagation()}
-                    className="cursor-grab"
-                >
-                    <Grip />
-                </ItemActions>
-            </Item>
-            <TaskDetailsDialog taskId={task.id} open={open} onOpenChange={setOpen} />
-        </>
+                <GripVertical />
+            </ItemActions>
+        </Item>
     )
 }

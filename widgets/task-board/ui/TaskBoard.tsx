@@ -22,6 +22,7 @@ import {
     type DragStartEvent,
     type DragOverEvent,
     type DragEndEvent,
+    TouchSensor,
 } from '@dnd-kit/core'
 import { sortableKeyboardCoordinates } from '@dnd-kit/sortable'
 
@@ -55,6 +56,12 @@ export function TaskBoard() {
     // сенсоры как раньше ...
     const sensors = useSensors(
         useSensor(PointerSensor),
+        useSensor(TouchSensor, {
+            activationConstraint: {
+                delay: 200,
+                tolerance: 5,
+            },
+        }),
         useSensor(KeyboardSensor, {
             coordinateGetter: sortableKeyboardCoordinates,
         }),
@@ -184,7 +191,7 @@ export function TaskBoard() {
             onDragOver={handleDragOver}
             onDragEnd={handleDragEnd}
         >
-            <section className="grid grid-cols-3 gap-[2%]">
+            <section className="grid md:grid-cols-3 gap-[2%] mb-[2dvh]">
                 {COLUMNS.map((col) => {
                     const ids = columns[col]
                     const items: Task[] = ids
@@ -193,14 +200,16 @@ export function TaskBoard() {
 
                     return (
                         <section key={col}>
-                            <Label className="py-4 capitalize">{col}</Label>
+                            <Label className="py-4 px-2 capitalize">{col}</Label>
                             <Column id={col} tasks={items} />
                         </section>
                     )
                 })}
             </section>
 
-            <DragOverlay>{activeTask ? <TaskCard task={activeTask} /> : null}</DragOverlay>
+            <DragOverlay>
+                {activeTask ? <TaskCard task={activeTask} onOpenDetails={() => true} /> : null}
+            </DragOverlay>
         </DndContext>
     )
 }
