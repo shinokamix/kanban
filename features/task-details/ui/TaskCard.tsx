@@ -42,6 +42,7 @@ export function TaskCard({ task }: TaskCardWithDetailsProps) {
                 variant={'outline'}
                 size={'sm'}
                 onClick={() => setOpen(true)}
+                className="bg-background"
             >
                 <ItemContent>
                     <p className="pointer-events-none">{task.title}</p>
