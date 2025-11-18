@@ -200,7 +200,9 @@ export function TaskBoard() {
                 })}
             </section>
 
-            <DragOverlay>{activeTask ? <TaskCard task={activeTask} /> : null}</DragOverlay>
+            <DragOverlay>
+                {activeTask ? <TaskCard task={activeTask} onOpenDetails={() => true} /> : null}
+            </DragOverlay>
         </DndContext>
     )
 }
