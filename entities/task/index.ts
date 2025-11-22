@@ -10,4 +10,3 @@ export {
     taskStatusChanged,
 } from './model/task.slice'
 export { taskSelectors } from './model/selectors'
-export { default as TaskItem } from './ui/TaskItem'
