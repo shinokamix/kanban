@@ -44,7 +44,7 @@ export default function Column({ tasks, id }: ColumnProps) {
                         : id === 'in-progress'
                           ? 'bg-blue-50'
                           : 'bg-green-50'
-                } p-3 min-h-136 rounded-xl flex flex-col gap-[0.5dvh]`}
+                } p-3 md:min-h-136 min-h-52 rounded-xl flex flex-col gap-[0.5dvh]`}
                 ref={setNodeRef}
             >
                 {tasks.map((task) => {

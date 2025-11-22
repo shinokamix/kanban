@@ -191,7 +191,7 @@ export function TaskBoard() {
             onDragOver={handleDragOver}
             onDragEnd={handleDragEnd}
         >
-            <section className="grid md:grid-cols-3 gap-[2%] mb-[2dvh]">
+            <section className="grid md:grid-cols-3 md:gap-[1dvw]">
                 {COLUMNS.map((col) => {
                     const ids = columns[col]
                     const items: Task[] = ids
