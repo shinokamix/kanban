@@ -49,6 +49,7 @@ export function TaskCard({ task, onOpenDetails }: TaskCardProps) {
                 {...attributes}
                 onClick={(e) => e.stopPropagation()}
                 className="cursor-grab w-4 h-4 touch-none"
+                data-testid="task-card-handle"
             >
                 <GripVertical />
             </ItemActions>
