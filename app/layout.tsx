@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
     title: 'Kanban',
     description:
-        'A web-based Kanban board application for organizing tasks and workflows using visual columns and draggable cards.',
+        'A minimal Kanban board for keeping work organized. Create tasks, move them between columns and always see what’s in progress and what’s done — clean, simple and nothing beyond the basics.',
 }
 
 export default function RootLayout({
