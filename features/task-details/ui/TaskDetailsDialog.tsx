@@ -52,7 +52,7 @@ export function TaskDetailsDialog({ taskId, open, onOpenChange }: TaskDetailsDia
         <Dialog open={open} onOpenChange={handleDialogOpenChange}>
             <DialogContent>
                 <DialogHeader>
-                    <DialogTitle>Task details</DialogTitle>
+                    <DialogTitle data-testid="task-details-title">Task details</DialogTitle>
                 </DialogHeader>
 
                 {isEditing ? (
