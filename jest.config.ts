@@ -10,12 +10,12 @@ const config: Config = {
     testEnvironment: 'jsdom',
     setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
     moduleNameMapper: {
-        '^@app/(.*)$': '<rootDir>/app/$1',
-        '^@shared/(.*)$': '<rootDir>/shared/$1',
-        '^@entities/(.*)$': '<rootDir>/entities/$1',
-        '^@features/(.*)$': '<rootDir>/features/$1',
-        '^@widgets/(.*)$': '<rootDir>/widgets/$1',
-        '^@processes/(.*)$': '<rootDir>/processes/$1',
+        '^@/app/(.*)$': '<rootDir>/app/$1',
+        '^@/shared/(.*)$': '<rootDir>/shared/$1',
+        '^@/entities/(.*)$': '<rootDir>/entities/$1',
+        '^@/features/(.*)$': '<rootDir>/features/$1',
+        '^@/widgets/(.*)$': '<rootDir>/widgets/$1',
+        '^@/providers/(.*)$': '<rootDir>/providers/$1',
     },
 }
 
